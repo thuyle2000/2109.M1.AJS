@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ajs-event</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <!-- buoc 1. nhung thu vien angularjs tu duong link CDN -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.9/angular.min.js"></script>
+</head>
+<body>
+    <div class="container" ng-app="myAPP">
+        <h2>AJS Event - Init Demo</h2>
+        <hr>
+        <div class="row">
+            <div class="col-md-6" ng-controller="myFORM"
+                ng-init="tensp='Pho bo'; dongia=60000; soluong=1; thanhtien='' "
+            >
+                <form action="" >
+                    <div class="form-group">
+                        <label for="">input product: </label>
+                        <input type="text" name="pname" id="pname" ng-model="tensp" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="">input unit price :</label>
+                        <input type="text" name="price" id="price" ng-model="dongia" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="">input quantity :</label>
+                        <input type="text" name="qty" id="qty" ng-model="soluong" class="form-control">
+                    </div>
+                    <div>
+                        <input type="button" value="Payment" class="btn btn-danger" ng-click="pay()" >
+                    </div>
+                    <hr>
+                    <p>Total ($): <strong> {{thanhtien}} </strong> </p> 
+                </form>
+            </div>
+        </div>
+    </div>
+    <script>
+        //1. khai bao va khoi tao bien app, de quan ly toan bo ung dung angular js
+        let app = angular.module("myAPP",[]);
+
+        //2. lap trinh cho controller "myFORM"
+        app.controller("myFORM", function($scope){
+
+            //3. lap trinh cho ham xu ly su kien click tren nut payment
+            $scope.pay = function(){
+                $scope.thanhtien = $scope.dongia * $scope.soluong;
+            } 
+
+        } );
+
+    </script>
+</body>
+</html>
