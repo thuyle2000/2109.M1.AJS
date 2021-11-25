@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ajs-repeat</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <!-- buoc 1. nhung thu vien angularjs tu duong link CDN -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.9/angular.min.js"></script>
+</head>
+<body>
+    <div class="container" ng-app
+         ng-init="ds=[ 
+                {name:'thanh sang', id:'S01', mark:95},
+                {name:'phat tai', id:'S02', mark:75},
+                {name:'cam tu', id:'S03', mark:65},
+                {name:'anh vu', id:'S04', mark:100},
+                {name:'nhat minh', id:'S05', mark:50},
+                {name:'minh anh', id:'S06', mark:90} 
+         ];">
+
+        <h2>AJS Repeat Demo - version 3</h2>
+        <hr>
+
+        <div>
+            <h4>Student List</h4>
+            <table class="table table-bordered table-hover table-striped">
+                <thead>
+                    <tr>
+                        <th>No.</th>
+                        <th>Student ID</th>
+                        <th>Student Name</th>
+                        <th>Mark</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr ng-repeat="sv in ds">
+                        <td>{{$index + 1}}</td>
+                        <td>{{sv.id}}</td>
+                        <td>{{sv.name}}</td>
+                        <td>{{sv.mark}}</td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>
+
+        
+    </div>
+</body>
+</html>
