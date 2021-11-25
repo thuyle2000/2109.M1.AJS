@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ajs-binding</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <!-- buoc 1. nhung thu vien angularjs tu duong link CDN -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.9/angular.min.js"></script>
+</head>
+
+<body>
+    <!-- khai bao pham vi hoat dong cua ung dung ajs -->
+    <div class="container" ng-app>  
+        <h2>AngularJS Binding Data Demo</h2>
+        <hr>
+        <form action="">
+            <div>
+                <label for="">input product: </label>
+                <input type="text" name="pname" id="pname">
+            </div>
+            <div>
+                <label for="">input unit price :</label>
+                <input type="text" name="price" id="price" ng-model="dongia">
+            </div>
+            <div>
+                <label for="">input quantity :</label>
+                <input type="text" name="qty" id="qty" ng-model="soluong">
+            </div>
+            <hr>
+            <p>Thanh tien: {{dongia*soluong}} </p> <!--{{dongia*soluong}}: bieu thuc cua ajs -->
+        </form>
+    </div>
+</body>
+
+</html>

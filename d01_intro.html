@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ajs</title>
+
+    <!-- buoc 1. nhung thu vien angularjs -->
+    <script src="js/angular.min.js"></script>
+</head>
+
+<!-- buoc 2, khai bao ung dung angularjs ngay tu the body [ng-app]-->
+<body ng-app>
+    <h2>Angular JS Demo</h2>
+    <hr>
+    <div>
+        <label for="">Input your name: </label>
+
+        <!-- buoc 3, luu du lieu nhap trong o name vo bien username cua ung dung angularjs [ng-model]-->
+        <input type="text" name="name" id="name" ng-model="username">
+    </div>
+
+    <!-- buoc 4, hien thi du lieu ung dung angularjs trong bien username ra the p [ng-bind]-->
+    <p ng-bind="username"></p>
+</body>
+</html>
