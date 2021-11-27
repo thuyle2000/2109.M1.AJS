@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>filter-number</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <!-- buoc 1. nhung thu vien angularjs tu duong link CDN -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.9/angular.min.js"></script>
+</head>
+<body>
+    <div class="container" ng-app="myAPP" ng-controller="myCTR">
+        <h2>AJS - Filter lowercase/uppercase/json demo</h2>
+        <hr>
+
+        <div>
+            user id: {{user.id|uppercase}} <br>
+            user name: {{user.name|uppercase}} <br>
+            user email: {{user.email|lowercase}} <br>
+            user: {{user|json}} <br>
+        </div>
+
+    </div>
+
+    <script>
+        let app = angular.module("myAPP",[]);
+        app.controller("myCTR", function($scope){
+            $scope.user={'id':'nv01', 'name':'Nguyen Anh Vu', 'email':'anhvu@gmail.com'};
+        });
+    </script>
+</body>
+</html>

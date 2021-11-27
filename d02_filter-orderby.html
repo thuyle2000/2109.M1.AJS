@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>filter-number</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <!-- buoc 1. nhung thu vien angularjs tu duong link CDN -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.9/angular.min.js"></script>
+</head>
+
+<body>
+    <div class="container" ng-app="myAPP" ng-controller="myCTR">
+        <h2>AJS - Filter order-by demo</h2>
+        <hr>
+
+        <div>
+            <h3>Danh sach nhan vien</h3>
+            <hr>
+            <table class="table table-responsive table-striped table-hover">
+                <thead>
+                    <tr>
+                        <th>so tt</th>
+                        <th>ma so</th>
+                        <th>ho ten</th>
+                        <th>luong co ban</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr ng-repeat="nv in ds">
+                        <td>{{$index}}</td>
+                        <td>{{nv.id}}</td>
+                        <td>{{nv.name}}</td>
+                        <td>{{nv.salary}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div>
+            <h3>Danh sach nhan vien - theo bac luong</h3>
+            <hr>
+            <table class="table table-responsive table-striped table-hover">
+                <thead>
+                    <tr>
+                        <th>so tt</th>
+                        <th>ma so</th>
+                        <th>ho ten</th>
+                        <th>luong co ban</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr ng-repeat="nv in ds | orderBy:'salary'">
+                        <td>{{$index}}</td>
+                        <td>{{nv.id}}</td>
+                        <td>{{nv.name}}</td>
+                        <td>{{nv.salary}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+
+    </div>
+
+    <script>
+        let app = angular.module("myAPP", []);
+        app.controller("myCTR", function ($scope) {
+            $scope.ds = [
+                { 'id': 'nv01', 'name': 'nguyen Anh Vu', 'salary': 1000 },
+                { 'id': 'nv02', 'name': 'huynh nhat thanh', 'salary': 800 },
+                { 'id': 'nv03', 'name': 'le thi minh anh', 'salary': 500 },
+                { 'id': 'nv04', 'name': 'pham nhat minh', 'salary': 900 },
+                { 'id': 'nv05', 'name': 'nguyen minh nhat', 'salary': 600 },
+                { 'id': 'nv06', 'name': 'le thanh sanh', 'salary': 750 }
+            ];
+        });
+    </script>
+</body>
+
+</html>
