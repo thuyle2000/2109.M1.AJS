@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>scope</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <!-- buoc 1. nhung thu vien angularjs tu duong link CDN -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.9/angular.min.js"></script>
+</head>
+
+<body>
+    <div class="container" ng-app="myAPP">
+        <h2>Angular -scope demo</h2>
+        <hr>
+
+        <p>The rootScope's favorite color:</p>
+        <h1 style="color: blue;">{{color}}</h1>
+
+        <div ng-controller="myCtrl">
+
+            <p>The scope of the controller's favorite color:</p>
+            <h1 style="color: red;">{{color}}</h1>
+
+        </div>
+
+        <p>The rootScope's favorite color is still:</p>
+        <h1 style="color: blue;">{{color}}</h1>
+
+    </div>
+
+    <script>
+        let app = angular.module("myAPP", []);
+
+        //tao bien color co pham vi toan ung dung
+        app.run(function ($rootScope) {
+            $rootScope.color = 'blue';
+        });
+
+        //lap trinh cho controller [myCtrl], cung tao bien color nhung pham vi thuoc [myCtrl]
+        app.controller("myCtrl", function($scope){
+            $scope.color = 'red';
+        });
+
+    </script>
+</body>
+
+</html>

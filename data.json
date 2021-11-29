@@ -1,0 +1,39 @@
+{
+    "dsnv": [
+        {
+            "id": "nv01",
+            "name": "nguyen anh vu",
+            "salary": 1000
+        },
+        {
+            "id": "nv02",
+            "name": "huynh nhat thanh",
+            "salary": 800
+        },
+        {
+            "id": "nv03",
+            "name": "le thi minh anh",
+            "salary": 500
+        },
+        {
+            "id": "nv04",
+            "name": "pham nhat minh",
+            "salary": 900
+        },
+        {
+            "id": "nv05",
+            "name": "nguyen minh nhat",
+            "salary": 600
+        },
+        {
+            "id": "nv06",
+            "name": "le thanh sang",
+            "salary": 750
+        },
+        {
+            "id": "nv07",
+            "name": "ho thang duc",
+            "salary": 350
+        }
+    ]
+}
