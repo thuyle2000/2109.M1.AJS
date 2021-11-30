@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>form-required</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <!-- buoc 1. nhung thu vien angularjs tu duong link CDN -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.9/angular.min.js"></script>
+
+    <style>
+        label{
+            display: inline-block;
+            width: 7rem;
+        }
+
+        input.ng-pristine{
+            background-color: yellow;
+        }
+        input.ng-touched.ng-invalid{
+            background-color: antiquewhite;
+            color: red;
+        }
+
+        input.ng-touched.ng-valid{
+            background-color: antiquewhite;
+            color: blue;
+        }
+
+        .error{
+            color: red;
+        }
+
+    </style>
+</head>
+<body ng-app>
+    <div class="container">
+        <h2>Form-Required Demo</h2>
+        <hr>
+
+        <form name="formlogin">
+            <div>
+                <label for="">user name: </label>
+                <input type="text" name="userid" ng-model="user" ng-minlength="5" required />
+                <span class="error" ng-show="formlogin.userid.$error.required">user is required</span>
+                <span class="error" ng-show="formlogin.userid.$invalid"> - user is at least 5 characters</span>
+                
+            </div>
+
+            <div>
+                <label for="">password: </label>
+                <input type="password" name="pass" ng-model="pwd" required > 
+                <span class="error" ng-show="formlogin.pass.$error.required">password is required</span>
+            </div>
+
+            <div>
+                <input type="submit" value="Submit"
+                ng-disabled="(formlogin.pass.$pristine||formlogin.pass.$invalid )||
+                (formlogin.userid.$pristine && formlogin.userid.$invalid)"
+                >
+                <input type="reset" value="Reset">
+            </div>
+        </form>
+
+
+
+    </div>
+
+
+</body>
+</html>
