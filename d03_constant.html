@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ajs-value</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <!-- buoc 1. nhung thu vien angularjs tu duong link CDN -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.9/angular.min.js"></script>
+</head>
+<body ng-app="myAPP" ng-controller="myCTR">
+    <div class="container">
+        <h3>AJS - Constant Dependency Demo</h3>
+        <hr>
+        <p>Enter the radius: 
+            <input type="number" name="bk" id="bk" ng-model="bk">
+        </p>
+        <input type="button" value="Area" ng-click="area()">
+        <p>
+            PI: {{PI}}
+        </p>
+        <p>
+            Result: {{result}}
+        </p>
+    </div>
+    
+    <script>
+        let app = angular.module("myAPP", []);
+        app.constant("PI", 3.1416);
+
+        app.controller("myCTR", function($scope, PI){
+            $scope.PI = PI;
+
+            $scope.bk=4;
+            $scope.area = function(){
+                $scope.result = $scope.PI * $scope.bk * $scope.bk;
+            }
+        });
+    </script>
+</body>
+</html>
