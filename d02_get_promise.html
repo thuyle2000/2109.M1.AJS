@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>http-get-promise</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <!-- buoc 1. nhung thu vien angularjs tu duong link CDN -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.9/angular.min.js"></script>
+</head>
+
+<body>
+    <div class="container" ng-app="myAPP" ng-controller="myCTR">
+        <h2>AngularJS http-get service</h2>
+        <hr>
+        <div>
+            <h3>Them nhan vien moi</h3>
+            <form name="nhapNV" ng-submit="themNV()">
+                <div>
+                    <label for="">ma so</label> <br>
+                    <input type="text" name="ms" id="ms" ng-model='ms' required>
+                </div>
+
+                <div>
+                    <label for="">ho ten</label> <br>
+                    <input type="text" name="ten" id="ten" ng-model='ten' required>
+                </div>
+
+                <div>
+                    <label for="">luong cb</label> <br>
+                    <input type="number" name="luong" id="luong" ng-model='luong' required min="0">
+                </div>
+
+                <div>
+                    <input type="submit" value="submit" class="btn btn-danger">
+                    <input type="reset" value="reset" class="btn btn-info">
+                </div>
+
+            </form>
+        </div>
+        <hr>
+        <h3>Danh sach nhan vien</h3>
+        <table class="table table-hover table-striped table-bordered">
+            <thead>
+                <tr>
+                    <th>stt</th>
+                    <th>ma so</th>
+                    <th>ho ten</th>
+                    <th>luong cb</th>
+                    <th>action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="nv in ds">
+                    <td>{{$index+1}}</td>
+                    <td>{{nv.id}}</td>
+                    <td>{{nv.name}}</td>
+                    <td>{{nv.salary}}</td>
+                    <td><input type="button" value="delete" class="btn btn-success" 
+                        ng-click="xoaNV($index)"> </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        let app = angular.module("myAPP", []);
+        app.controller("myCTR", function ($scope, $http) {
+
+            var promise = $http.get("data.json");
+            promise.then(function (response) {
+                $scope.ds = response.data.dsnv;
+            });
+
+
+            //lap trinh cho su kien submit cua form nhap thong tin nv
+            $scope.themNV = function () {
+                let nv_moi = {
+                    "id": $scope.ms,
+                    "name": $scope.ten,
+                    "salary": $scope.luong
+                };
+
+                console.log(nv_moi);
+
+                //luu doi tuong nv_moi vo mang ds
+                $scope.ds.push(nv_moi);
+            }
+
+
+            //lap trinh cho su kien xoa 1 nhan vien 
+            $scope.xoaNV = function(index){
+                if(confirm("ban co chac chan ko ?")){
+                    $scope.ds.splice(index, 1);
+                }
+               
+            }
+        });
+    </script>
+</body>
+
+</html>
