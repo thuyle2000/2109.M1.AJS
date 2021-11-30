@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ajs-factory</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <!-- buoc 1. nhung thu vien angularjs tu duong link CDN -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.9/angular.min.js"></script>
+</head>
+
+<body ng-app="myAPP" ng-controller="myCTR">
+    <div class="container">
+        <h3>AJS Factory dependency Demo</h3>
+        <hr>
+
+        <p>
+            enter a number:
+            <input type="number" name="n" id="n" ng-model="n">
+        </p>
+        <p>
+            <input type="button" value="Square" ng-click="square()">
+        </p>
+        <p>
+            Result: {{result}}
+        </p>
+    </div>
+
+    <script>
+        let app= angular.module("myAPP", []);
+
+        app.factory("myFACTORY", function(){
+            let a={};
+
+            a.binhphuong=function(x){
+                return x*x;
+            }
+
+            return a;
+        });
+
+        app.controller("myCTR", function($scope, myFACTORY){
+            $scope.n = 5;
+            $scope.square = function(){
+                // $scope.result = $scope.n * $scope.n;
+                $scope.result = myFACTORY.binhphuong($scope.n);
+            }
+
+        })
+
+
+
+
+    </script>
+</body>
+
+</html>
